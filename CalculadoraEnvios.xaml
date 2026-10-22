@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PM2E130046.CalculadoraEnvios"
+             Title="CalculadoraEnvios">
+
+    <!-- ScrollView esto nos permite deslizar si el teclado parte de la pantalla -->
+    <ScrollView>
+        <!-- VerticalStackLayout: apila los controles uno debajo del otro -->
+        <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+
+            <Label Text="CALCULADORA DE ENVIOS" 
+                   FontSize="24" 
+                   FontAttributes="Bold" 
+                   TextColor="Blue" 
+                   HorizontalOptions="Center"/>
+
+            <Label Text="Descripcion del paquete:" 
+                   FontAttributes="Bold"/>
+
+            <!-- Border: dibuja un marco con esquinas redondeadas alrededor del Entry -->
+            <Border Stroke="Black" 
+                    StrokeShape="RoundRectangle 8" 
+                    Padding="5,0">
+                <Entry x:Name="txtDescripcion" 
+                       Placeholder="Documentos o Paquete Ejemplo" 
+                       Keyboard="Text"/>
+            </Border>
+
+            <Label Text="Peso del paquete (Kg):" 
+                   FontAttributes="Bold"/>
+
+            <!-- Border: dibuja un marco con esquinas redondeadas alrededor del Entry -->
+            <Border Stroke="Black" 
+                    StrokeShape="RoundRectangle 8" 
+                    Padding="5,0">
+                <Entry x:Name="txtPeso" 
+                       Placeholder="2.5" 
+                       Keyboard="Numeric"/>
+            </Border>
+
+            <Label Text="Zona de Destino:" 
+                   FontAttributes="Bold"/>
+
+            <!-- Border: dibuja un marco con esquinas redondeadas alrededor de la lista -->
+            <Border Stroke="Black" 
+                    StrokeShape="RoundRectangle 8" 
+                    Padding="5,0">
+                <Picker x:Name="pckDestino" 
+                        Title="Seleccione una Zona">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Zona Local - Tarifa base: L50.00 por kg</x:String>
+                            <x:String>Zona Nacional - Tarifa base: L85.00 por kg</x:String>
+                            <x:String>Zona Internacional - Tarifa base: L150.00 por kg</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Border>
+
+            <!-- CheckBox para el Servicio Express -->
+            <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                <CheckBox x:Name="chkServicioExpress" 
+                          Color="#0ED9F0"/>
+                <Label Text="Servicio Express (+ L 100.00)" 
+                       FontAttributes="Bold" 
+                       VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <!-- Botón para Calcular Envío -->
+            <Button x:Name="btnCalcular" 
+                    Text="Calcular Envío" 
+                    BackgroundColor="Blue" 
+                    TextColor="White" 
+                    FontAttributes="Bold" 
+                    FontSize="16" 
+                    CornerRadius="10" 
+                    HeightRequest="50" 
+                    Clicked="btnCalcular_Clicked"></Button>
+
+            <Border x:Name="tarjetaResultado"
+        Stroke="#0ED9F0" 
+        StrokeThickness="2"
+        StrokeShape="RoundRectangle 12" 
+        BackgroundColor="#F0FAFC"
+        Padding="15"
+        Margin="0,10,0,20">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Resultado" 
+               FontSize="12" 
+               FontAttributes="Bold" 
+               TextColor="Black" 
+               HorizontalOptions="Start"/>
+
+                    <Label x:Name="lblCostoTotal" 
+               Text="Costo Total: L 0.00" 
+               FontSize="20" 
+               FontAttributes="Bold" 
+               TextColor="Black"/>
+
+                    <Label x:Name="lblResumenDescripcion" 
+               Text="Detalle:" 
+               FontSize="12"
+               TextColor="Black"/>
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
